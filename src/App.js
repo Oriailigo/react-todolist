@@ -8,7 +8,7 @@ import {CreateTodoButton} from './CreateTodoButton';
 const defaultTodos=[
 {text:"hacer la cena", completed:false},
 {text:"Sacar la basura", completed:true},
-{text:"Tomar el curso de React", completed:false},
+{text:"Tomar el curso de React", completed:true},
 {text:"Comer sano", completed:false},
 ]
 function App() {
