@@ -29,13 +29,31 @@ function App() {
       return todoText.includes(searchText)}
   );
 
-  const totaTodos=defaultTodos.length;
-  console.log(searchValue);
+  const totalTodos=todos.length;
+  console.log(todos.length);
+
+  const completeTodo=(text)=>{
+    const newTodos=[...todos];
+    const todoIndex=newTodos.findIndex(
+      (todo) => todo.text === text
+    );
+    newTodos[todoIndex].completed=true;
+    setTodos(newTodos)
+  }
+
+  const deleteTodo=(text)=>{
+    const newTodos=[...todos];
+    const todoIndex=newTodos.findIndex(
+      (todo) => todo.text === text
+    );
+    newTodos.splice(todoIndex,1);
+    setTodos(newTodos);
+  }
   return (
     <>
       <TodoCount 
         completed={completedTodos}
-        total={totaTodos}></TodoCount>
+        total={totalTodos}></TodoCount>
       <TodoSearch
         searchValue={searchValue}
         setSearchValue={setSearchValue}
@@ -45,8 +63,14 @@ function App() {
         <TodoItem 
           key={todo.text} 
           text={todo.text} 
-          completed={todo.completed}></TodoItem>)}
-    
+          completed={todo.completed}
+          onComplete={()=> completeTodo(todo.text)}
+          onDelete={()=> deleteTodo(todo.text)}
+          >
+
+
+          </TodoItem>)}
+
       </TodoList>
 
   <CreateTodoButton/> 
