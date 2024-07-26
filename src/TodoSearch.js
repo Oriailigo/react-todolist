@@ -1,7 +1,15 @@
 import './TodoSearch.css';
-function TodoSearch(props){
+function TodoSearch({
+  searchValue,
+  setSearchValue,
+}){
   return(
-<input onChange={(event)=>{console.log("hizo click"); console.log(event.target.value);}} className='TodoSearch' tabIndex="0" type='text' placeholder='Buscar TODOs'></input>
+<input 
+  value={searchValue}
+  onChange={(event)=>
+    {setSearchValue(event.target.value);
+  }} 
+  className='TodoSearch' tabIndex="0" type='text' placeholder='Buscar TODOs'></input>
   );
 
 }
